@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude View</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script>
+    (function() {
+      var t = localStorage.getItem('claude-view-theme');
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      else if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    })();
+  </script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-logo">◆</span>
+        Claude View
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-view="dashboard">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          Dashboard
+        </button>
+        <button class="nav-item" data-view="projects">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+          </svg>
+          Projects
+        </button>
+        <button class="nav-item" data-view="tools">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+          Tools
+        </button>
+        <button class="nav-item" data-view="config">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          Config
+        </button>
+        <button class="nav-item" data-view="history">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          History
+        </button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="theme-toggle">
+          <button class="theme-btn" data-theme-value="system" title="System theme">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </button>
+          <button class="theme-btn" data-theme-value="dark" title="Dark theme">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+          <button class="theme-btn" data-theme-value="light" title="Light theme">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+
+      <!-- Dashboard -->
+      <div id="view-dashboard" class="view active">
+        <div class="view-header">
+          <h2>Dashboard</h2>
+        </div>
+        <div id="dashboard-content">
+          <p class="loading">Loading dashboard...</p>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div id="view-projects" class="view">
+        <div class="view-header">
+          <h2>Projects</h2>
+        </div>
+        <div id="projects-list" class="projects-grid">
+          <p class="loading">Loading projects...</p>
+        </div>
+        <div id="projects-pagination" class="pagination"></div>
+      </div>
+
+      <!-- Sessions -->
+      <div id="view-sessions" class="view">
+        <div class="view-header">
+          <button class="back-btn" id="back-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+            Projects
+          </button>
+          <div class="view-header-title">
+            <h2 id="sessions-project-name"></h2>
+            <p id="sessions-project-path" class="subtext"></p>
+          </div>
+        </div>
+        <div class="settings-tabs sessions-project-tabs">
+          <button class="settings-tab active" data-project-tab="sessions">Sessions</button>
+          <button class="settings-tab" data-project-tab="tools">Tools</button>
+          <button class="settings-tab" data-project-tab="config">Config</button>
+        </div>
+        <div id="project-sessions-pane" class="settings-pane active">
+          <div id="sessions-list" class="sessions-list">
+            <p class="loading">Loading sessions...</p>
+          </div>
+          <div id="sessions-load-more"></div>
+        </div>
+        <div id="project-config-pane" class="settings-pane">
+          <div id="project-config-content"></div>
+        </div>
+        <div id="project-tools-pane" class="settings-pane">
+          <div id="project-tools-content"></div>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div id="view-messages" class="view">
+        <div class="view-header">
+          <button class="back-btn" id="messages-back-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+            Sessions
+          </button>
+          <div class="view-header-title">
+            <h2 id="messages-session-title"></h2>
+          </div>
+          <a class="raw-btn" id="raw-file-btn" target="_blank" rel="noopener">Raw file</a>
+        </div>
+        <div id="messages-list" class="messages-list">
+          <p class="loading">Loading messages...</p>
+        </div>
+        <div id="messages-load-more"></div>
+      </div>
+
+      <!-- History -->
+      <div id="view-history" class="view">
+        <div class="view-header">
+          <h2>History</h2>
+          <input type="search" id="history-search" class="search-input" placeholder="Search prompts or projects..." autocomplete="off">
+        </div>
+        <div id="history-list" class="sessions-list">
+          <p class="loading">Loading history...</p>
+        </div>
+        <div id="history-pagination" class="pagination"></div>
+      </div>
+
+      <!-- Tools -->
+      <div id="view-tools" class="view">
+        <div class="view-header">
+          <h2>Tools</h2>
+        </div>
+        <div id="tools-content">
+          <p class="loading">Loading tools...</p>
+        </div>
+      </div>
+
+      <!-- Config -->
+      <div id="view-config" class="view">
+        <div class="view-header">
+          <h2>Config</h2>
+        </div>
+        <div id="config-content">
+          <p class="loading">Loading config...</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
